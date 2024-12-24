@@ -8,11 +8,13 @@ from taxi.models import Driver, Car
 
 def validate_license_number(lic_number: str) -> str:
     if len(lic_number) != 8:
-        raise ValidationError("License number must be exactly 8 characters long")
+        raise ValidationError("License number must be exactly "
+                              "8 characters long")
     elif len(lic_number) == 8:
         for i in range(0, 3):
             if lic_number[i] != lic_number[i].capitalize():
-                raise ValidationError("The first 3 letters must be capitalized")
+                raise ValidationError("The first 3 letters "
+                                      "must be capitalized")
             if not lic_number[i].isalpha():
                 raise ValidationError("The first 3 characters must be letters")
         for elem in range(3, 8):
